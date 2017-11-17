@@ -1,0 +1,16 @@
+
+set(TARGET_SOURCES
+	${DIR_SRC}/Window/ManagerImpl.cpp
+	${DIR_SRC}/Window/WindowImpl.cpp
+	${DIR_SRC}/ContainerBuilder.cpp)
+
+add_library(${TARGET_NAME} ${TARGET_SOURCES})
+target_include_directories(${TARGET_NAME} PRIVATE ${DIR_INCLUDE})
+target_link_libraries(${TARGET_NAME} CONAN_PKG::Grawlog CONAN_PKG::Hypodermic CONAN_PKG::Pulsr.Core)
+
+install(TARGETS ${TARGET_NAME}
+	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+	LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(DIRECTORY ${DIR_INCLUDE}/
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME} COMPONENT Devel)
