@@ -1,15 +1,15 @@
 #include "./ContainerBuilder.hpp"
 #include <Grawlog/Logger.hpp>
 
-#include "./Window/ManagerImpl.hpp"
-#include <Pulsr.Core/Window/Manager.hpp>
+#include "./WindowManagerImpl.hpp"
+#include <Pulsr.Core/Kernel/WindowManager.hpp>
 
 namespace Pulsr { namespace Kernel
 {
 	ContainerBuilder::ContainerBuilder()
 	{
 		DLOG(DIAG);
-		registerType<Window::ManagerImpl>().as<Core::Window::Manager>();
+		registerType<WindowManagerImpl>().as<Core::Kernel::WindowManager>();
 	}
 
 	ContainerBuilder::~ContainerBuilder()
